@@ -46,6 +46,10 @@
 (setq backup-directory-alist `(("." . "~/.saves")))
 
 
+;; limpa os espaçõs desnecessãrios quando salva o arquivo.
+(add-hook 'before-save-hook #'whitespace-cleanup)
+
+
 ;; habilita comando para limpar um buffer.
 (put 'erase-buffer 'disabled nil)
 
@@ -74,19 +78,13 @@
 ;; define o local onde ficarão os meus arq de configuração
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-;; APARÊNCIA
 (require 'ui)
-;; INTERFACE
 (require 'core-keybindings)
 (require 'interactive)
-;; EDIT
 (require 'edit)
-;; ORG-MODE
 (require 'organize)
-;; PROGRAMMING
-(require 'programming)
 (require 'funcs)
-;; KEYBINDINGS
+;; (require 'keybindings)
 (require 'keybindings)
-;; MANAGER-PROJETOS
 (require 'manager-projects)
+(require 'programming)

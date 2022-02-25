@@ -31,9 +31,8 @@
 
 (defun last-buffer ()
   (interactive)
-  (if (file-regular-p (buffer-file-name (other-buffer)))
-      (switch-to-buffer (other-buffer))
-    (message "Other buffer not FILE REGULAR.")))
+  (if (Buffer-menu--pretty-file-name
+  (switch-to-buffer (other-buffer)))
 
 
 (provide 'funcs)

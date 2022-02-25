@@ -9,19 +9,30 @@
 
 (use-package projectile 
   :config
-  (projectile-mode +1)
-  (setq projectile-completion-system 'helm)
-  (setq projectile-project-search-path '("~/workspace/"))
+  (setq projectile-completion-system 'helm
+	projectile-project-search-path '("~/workspace/"
+					 "~/init_macs"
+					 "~/Repositorios"))
+
+  (defun mx-neotree-projectile-action ()
+    "Fecha todas os nodes antes de abrir na raiz do projeto."
+    (interactive)
+    (progn
+      (neotree-projectile-action)
+      (neotree-collapse-all)))
+
   (lmap
     "p" '(:def nil :wk "projects")
-    "p p" '(:def projectile-command-map :wk "command-map")
+    "p p" '(:def projectile-command-map :wk "commands")
     "p q" '(:def projectile-switch-project :wk "switch-project")
     "p o" '(:def projectile-switch-open-project :wk "switch-open-project")
-    "p d" 'neotree-projectile-action
+    "p d" '(:def mx-neotree-projectile-action :wk "ROOT-DIR")
     "p f" '(:def projectile-find-file :wk "find-file")
     "p b" '(:def projectile-switch-to-buffer :wk "switch-to-buffer")
     "p r" '(:def projectile-recentf :wk "recentf")
-    "p s" '(:def projectile-run-eshell :wk "eshell")))
+    "p s" '(:def projectile-run-eshell :wk "eshell"))
+
+    (projectile-mode +1))
 
 
 (use-package neotree 
@@ -49,14 +60,21 @@
 
 (use-package perspective 
   :config
-  (setq persp-modestring-short t
-	persp-file-name (concat user-emacs-directory ".perspectives")
+  (setq persp-file-name (concat user-emacs-directory ".perspectives")
 	persp-state-default-file persp-file-name
 	persp-interactive-completion-function 'ido-completing-read
-	persp-sort 'created)
+	persp-sort 'access)
+
+  (defun mx-persp-switch-main ()
+    "Acessa rapidamente a persp MAIN."
+    (interactive)
+    (if (member "main" (persp-names))
+	(persp-switch "main")
+      (message "ERROR MAIN NOT ACCESS")))
 
   (lmap
     "l" '(:def nil :wk "layouts")
+    "l m" '(:def mx-persp-switch-main :wk "switch-persp-main")
     "l s" '(:def persp-switch :wk "switch-layout")
     "l R" '(:def persp-rename :wk "rename-layout")
     "l K" '(:def persp-kill :wk "kill-layout")
