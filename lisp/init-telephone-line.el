@@ -35,7 +35,7 @@
      (if (eq major-mode 'paradox-menu-mode)
 	 ;;Paradox fills this with position info.
 	 mode-line-front-space
-         mode-line-percent-position) t))
+	 mode-line-percent-position) t))
 
 
   (telephone-line-defsegment* telephone-line-multistate-tag-segment ()
@@ -57,7 +57,7 @@
     (when (display-time-mode)
       (setq display-time-24hr-format t)
       (shell-command-to-string "echo -n $(date '+%H:%M%p')")))
-      
+
 
   (telephone-line-defsegment* telephone-line-perspective-segment ()
     (when (bound-and-true-p persp-mode)
@@ -101,7 +101,7 @@
       'telephone-line-evil-normal))
 
     (defun telephone-line-mx-black-face (active)
-          (if (not active)
+	  (if (not active)
 	'mode-line-inactive
       'telephone-line-evil-replace))
 
@@ -124,13 +124,13 @@
 	'((accent . (telephone-line-major-mode-segment)))
 
 	telephone-line-center-rhs
-	'((mx-blue . (telephone-line-perspective-segment))
+	'(;; (mx-blue . (telephone-line-perspective-segment))
+	  (mx-blue . (telephone-line-projectile-segment))
 	  (nil . (telephone-line-mx-display-time-segment)))
 
 	telephone-line-rhs
-	'((accent . (telephone-line-projectile-segment))
-	  (mx-red . (telephone-line-vc-segment))
-	  (accent . (telephone-line-flycheck-segment))))
+	'((accent . (telephone-line-flycheck-segment))
+	  (mx-red . (telephone-line-vc-segment))))
 
 
   (setq telephone-line-primary-left-separator 'telephone-line-cubed-left

@@ -1,4 +1,4 @@
-(use-package magit 
+(use-package magit
   :demand t
   :config
   (lmap
@@ -7,9 +7,10 @@
     "g l" '(:def magit-dispatch :wk "list-commands")))
 
 
-(use-package projectile 
+(use-package projectile
   :config
   (setq projectile-completion-system 'helm
+	projectile-switch-project-action 'projectile-switch-to-buffer
 	projectile-project-search-path '("~/workspace/"
 					 "~/init_macs"
 					 "~/Repositorios"))
@@ -21,11 +22,22 @@
       (neotree-projectile-action)
       (neotree-collapse-all)))
 
+  (defun mx-projectile-switch-open-project ()
+    (interactive)
+    (setq-local projectile-switch-project-action 'projectile-switch-to-buffer)
+    (projectile-switch-open-project))
+
+  (defun mx-projectile-switch-project ()
+    (interactive)
+    (setq-local projectile-switch-project-action 'projectile-find-file)
+    (projectile-switch-project))
+
+
   (lmap
     "p" '(:def nil :wk "projects")
     "p p" '(:def projectile-command-map :wk "commands")
-    "p q" '(:def projectile-switch-project :wk "switch-project")
-    "p o" '(:def projectile-switch-open-project :wk "switch-open-project")
+    "p q" '(:def mx-projectile-switch-project :wk "switch-project")
+    "p o" '(:def mx-projectile-switch-open-project :wk "switch-open-project")
     "p d" '(:def mx-neotree-projectile-action :wk "ROOT-DIR")
     "p f" '(:def projectile-find-file :wk "find-file")
     "p b" '(:def projectile-switch-to-buffer :wk "switch-to-buffer")
@@ -35,7 +47,7 @@
     (projectile-mode +1))
 
 
-(use-package neotree 
+(use-package neotree
   :init
   (lmap
     "d" '(:def nil :wk "directory")
@@ -58,10 +70,11 @@
 	      ("RET" . neotree-quick-look)))
 
 
-(use-package perspective 
+(use-package perspective
+  :disabled t
   :config
-  (setq persp-file-name (concat user-emacs-directory ".perspectives")
-	persp-state-default-file persp-file-name
+  (setq ;; persp-file-name (concat user-emacs-directory ".perspectives")
+	;; persp-state-default-file persp-file-name
 	persp-interactive-completion-function 'ido-completing-read
 	persp-sort 'access)
 
@@ -82,12 +95,17 @@
     "l n" '(:def persp-next :wk "next-layout")
     "l a" '(:def persp-add-buffer :wk "add-buffer")
     "l d" '(:def persp-remove-buffer :wk "delete-buffer")
-    "l A" '(:def persp-set-buffer :wk "set-buffer"))
+    "l A" '(:def persp-set-buffer :wk "set-buffer")
+    "l S" 'persp-state-save
+    "l L" 'persp-state-load)
 
-  (add-hook 'kill-emacs-hook 'persp-state-save)
-  (add-hook 'emacs-startup-hook '(lambda () (persp-state-load persp-file-name)))
+  ;; (add-hook 'kill-emacs-hook 'persp-state-save)
+  ;; (add-hook 'emacs-startup-hook '(lambda () (persp-state-load persp-file-name)))
 
   (persp-mode))
+
+
+(desktop-save-mode 1)
 
 
 (provide 'manager-projects)

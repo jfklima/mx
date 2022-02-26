@@ -66,7 +66,9 @@
 ;; leader-map
 (lmap
   "SPC" '(:def helm-M-x :wk "M-x")
-  "TAB" '(:def helm-buffers-list :wk "mx-buffers")
+  ;; "TAB" '(:def helm-buffers-list :wk "mx-buffers")
+  ;; "TAB" 'projectile-switch-to-buffer
+  "TAB" 'smart-last-buffer
   "h" '(:def nil :wk "help")
   "h" help-map
   "f" '(:def nil :wk "file")
@@ -76,11 +78,12 @@
 
   "b" '(:def nil :wk "buffer")
   "b s" 'save-buffer
-  ;; "b b" 'helm-buffers-list
+  "b b" 'projectile-switch-to-buffer
   "b k" 'kill-this-buffer
   "b a" 'beginning-of-buffer
   "b e" 'end-of-buffer
   "b o" 'switch-to-buffer-other-window
+  "b K" '(:def crux-kill-other-buffers :wk "kill-other-buffers")
   "b D" '(:def crux-delete-buffer-and-file :wk "delete-buffer-and-file")
   "b R" '(:def crux-rename-buffer-and-file :wk "rename-buffer-and-file")
 
@@ -119,12 +122,5 @@
 (rmap
   "SPC" 'self-insert-command)
 
-
-;; CRUX COMMANDS
-(emap
-  "a" 'crux-move-beginning-of-line
-  "C-m" 'crux-smart-open-line
-  "sm" 'crux-smart-open-line-above
-  "k" 'crux-smart-kill-line)
 
 (provide 'keybindings)
