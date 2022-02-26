@@ -2,26 +2,27 @@
   :demand t
 
   :init
+  (add-hook 'after-init-hook 'company-tng-mode)
   (imap "TAB" 'company-complete)
 
   :config
   (setq completion-ignore-case t
 	company-tooltip-align-annotations t
 	company-minimum-prefix-length 3
+	;; company-require-match nil
+	;; company-require-match 'company-explicit-action-p
 	company-idle-delay 0.0)
 
   (let ((map company-active-map))
 
-    (define-key map (kbd "M-j") 'company-abort)
-    (define-key map (kbd "C-j") 'company-abort)
+    (define-key map (kbd "M-l") 'company-select-previous)
+    (define-key map (kbd "C-l") 'company-select-previous)
 
-    (define-key map (kbd "M-l") 'company-complete-common-or-cycle)
-    (define-key map (kbd "C-l") 'company-complete-common-or-cycle)
+    (define-key map (kbd "M-k") 'company-abort)
+    (define-key map (kbd "C-k") 'company-abort))
 
-    (define-key map (kbd "M-k") 'backward-kill-word)
-    (define-key map (kbd "C-k") 'backward-kill-word))
+    (global-company-mode +1))
 
-  (global-company-mode +1))
 
 
 (use-package avy
