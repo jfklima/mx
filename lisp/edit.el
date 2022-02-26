@@ -33,14 +33,16 @@
 
 
 (use-package crux)
-  ;; :bind
-  ;; (:map edit-map
-	;; ("a" . crux-move-beginning-of-line)
-
-	;; ("m" . newline)
-	;; ("C-m" . crux-smart-open-line)
-	;; ("sm" . crux-smart-open-line-above)
-	;; ("k" . crux-smart-kill-line)))
+;; COMMANDS
+(emap
+  "a" 'crux-move-beginning-of-line
+  "C-m" 'crux-smart-open-line
+  "sm" 'crux-smart-open-line-above
+  "sk" 'crux-kill-line-backwards
+  "C-k" 'crux-smart-kill-line
+  "sl" 'crux-duplicate-current-line-or-region
+  "sj" 'crux-top-join-line
+  "M-o" 'crux-other-window-or-switch-buffer)
 
 
 (use-package zzz-to-char
