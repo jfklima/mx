@@ -4,7 +4,7 @@
   (require 'helm-config)
 
   (setq helm-command-prefix-key "C-x c"
-	helm-move-to-line-cycle-in-source t)
+	helm-move-to-line-cycle-in-source nil)
 
   (lmap
     "h" helm-command-map)
