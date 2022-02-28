@@ -4,7 +4,6 @@
   (prog-mode . multistate-mode)
   (text-mode . multistate-mode)
 
-
   (multistate-change-state . multistate-change-cursor-color)
 
   ;; enable/disabled selection is Select state
@@ -105,46 +104,4 @@
   (global-set-key (kbd "M-m") 'multistate-mode))
 
 
-(use-package general
-  :after multistate
-  :config
-  (general-create-definer emap :keymaps edit-map)
-  (general-create-definer imap :keymaps insert-map)
-  (general-create-definer vmap :keymaps mark-map)
-  (general-create-definer rmap :keymaps replace-map)
-  (general-create-definer umap :keymaps uppercase-map)
-  (general-create-definer lmap :keymaps edit-map :prefix "SPC")
-  (general-create-definer mmap :keymaps edit-map :prefix "SPC m")
-
-  :bind
-  (:map insert-map
-	("<return>" . edit-state)
-	("M-u" . uppercase-state))
-
-  (:map edit-map
-	("i" . insert-state)
-	("R" . replace-state)
-	("<return>" . mark-state)
-	("M-u" . uppercase-state))
-
-  (:map mark-map
-	("<return>" . edit-state))
-
-  (:map replace-map
-	("<return>" . edit-state))
-
-  (:map uppercase-map
-	("<return>" . edit-state)
-	("M-i" . insert-state)))
-
-
-(use-package which-key
-  :config
-  (setq which-key-idle-delay 0.7
-	which-key-idle-secondary-delay 0
-	which-key-sort-order 'which-key-prefix-then-key-order
-	which-key-show-prefix 'left)
-  (which-key-mode 1))
-
-
-(provide 'core-keybindings)
+(provide 'init-multistate)

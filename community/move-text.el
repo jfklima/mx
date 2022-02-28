@@ -65,9 +65,9 @@
   (cond
    ((and mark-active transient-mark-mode)
     (if (> (point) (mark))
-        (exchange-point-and-mark))
+	(exchange-point-and-mark))
     (let ((column (current-column))
-          (text (delete-and-extract-region (point) (mark))))
+	  (text (delete-and-extract-region (point) (mark))))
       (forward-line arg)
       (move-to-column column t)
       (set-mark (point))
@@ -78,23 +78,23 @@
     (let ((column (current-column)))
       (beginning-of-line)
       (when (or (> arg 0) (not (bobp)))
-        (forward-line)
-        (when (or (< arg 0) (not (eobp)))
-          (transpose-lines arg)
-          (when (and
-                 ;; Account for changes to transpose-lines in Emacs 24.3
-                 (eval-when-compile
-                   (not (version-list-<
-                         (version-to-list emacs-version)
-                         '(24 3 50 0))))
-                 ;; Make `move-text-up' works with Emacs 26.0
-                 (eval-when-compile
-                   (version-list-<
-                    (version-to-list emacs-version)
-                    '(26 0 50 1)))
-                 (< arg 0))
-            (forward-line -1)))
-        (forward-line -1))
+	(forward-line)
+	(when (or (< arg 0) (not (eobp)))
+	  (transpose-lines arg)
+	  (when (and
+		 ;; Account for changes to transpose-lines in Emacs 24.3
+		 (eval-when-compile
+		   (not (version-list-<
+			 (version-to-list emacs-version)
+			 '(24 3 50 0))))
+		 ;; Make `move-text-up' works with Emacs 26.0
+		 (eval-when-compile
+		   (version-list-<
+		    (version-to-list emacs-version)
+		    '(26 0 50 1)))
+		 (< arg 0))
+	    (forward-line -1)))
+	(forward-line -1))
       (move-to-column column t)))))
 
 ;;;###autoload

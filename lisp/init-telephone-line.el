@@ -1,9 +1,9 @@
 (use-package telephone-line
+  :defer 0.1
   :init
   (display-time-mode t)
 
   :config
-
   (telephone-line-defsegment* telephone-line-mx-buffer-segment ()
     (buffer-name))
 
@@ -124,14 +124,13 @@
 	'((accent . (telephone-line-major-mode-segment)))
 
 	telephone-line-center-rhs
-	'(;; (mx-blue . (telephone-line-perspective-segment))
-	  (mx-blue . (telephone-line-projectile-segment))
+	'((mx-blue . (telephone-line-projectile-segment))
+	  ;; (mx-blue . (telephone-line-perspective-segment))
 	  (nil . (telephone-line-mx-display-time-segment)))
 
 	telephone-line-rhs
-	'((accent . (telephone-line-flycheck-segment))
-	  (mx-red . (telephone-line-vc-segment))))
-
+	'((mx-red . (telephone-line-vc-segment))
+	  (accent . (telephone-line-flycheck-segment))))
 
   (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
 	telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left

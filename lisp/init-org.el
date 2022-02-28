@@ -4,16 +4,16 @@
   (setq org-directory "~/org/")
 
   (setq org-capture-templates
-           '(("a" "Add TODO in PROJECT" entry (file+headline "~/org/todo.org" "Tarefas")
-              "* TODO %?%i%A")))
+	   '(("a" "Add TODO in PROJECT" entry (file+headline "~/org/todo.org" "Tarefas")
+	      "* TODO %?%i%A")))
 
   (setq org-hide-leading-stars t)
 
     (setq org-todo-keywords
-          '((sequence "PROJECT(p)" "TODO(t)" "|" "DONE(d)")))
+	  '((sequence "PROJECT(p)" "TODO(t)" "|" "DONE(d)")))
 
   (setq org-todo-keyword-faces
-        '(("PROJECT" . (:foreground "blue"))))
+	'(("PROJECT" . (:foreground "blue"))))
 
   (defun init-org-mode ()
     (progn
@@ -24,9 +24,6 @@
 
   (setq org-agenda-files '("~/org/todo.org" "~/org/compromissos.org"))
 
-  (defun todo ()
-    (interactive)
-    (find-file "~/org/todo.org"))
 
   (lmap
     "o" '(:def nil :wk "org")
@@ -55,4 +52,10 @@
     "o" 'org-open-at-point))
 
 
-(provide 'organize)
+(defun todo ()
+  (interactive)
+  (find-file "~/org/todo.org"))
+
+(todo)
+
+(provide 'init-org)
