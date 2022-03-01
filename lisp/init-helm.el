@@ -1,4 +1,5 @@
 (use-package helm
+  :disabled t
   :demand t
   :config
   (require 'helm-config)
@@ -11,8 +12,9 @@
 
   (setq helm-autoresize-max-height 60)
   (setq helm-autoresize-min-height 20)
-  (helm-autoresize-mode 1))
+  (helm-autoresize-mode 1)
 
+  (helm-mode 1))
 
 
 
