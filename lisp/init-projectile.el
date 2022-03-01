@@ -1,16 +1,16 @@
 (use-package projectile
   :config
-  (setq projectile-completion-system 'ido
+
+  (setq projectile-completion-system 'auto
 	projectile-switch-project-action 'projectile-find-file
 	projectile-project-search-path '("~/workspace/"
 					 "~/init_macs"
 					 "~/Repositorios"))
 
-  (defun mx-projectile-switch-project ()
+  (defun mx-neotree-projectile-action ()
     (interactive)
-    (setq-local projectile-switch-project-action 'projectile-find-file)
-    (projectile-switch-project))
-
+    (neotree-projectile-action)
+    (neotree-collapse-all))
 
   (lmap
     "p" '(:def nil :wk "projects")
