@@ -26,7 +26,6 @@
 (remove-hook 'prog-mode-hook 'hl-line-mode)
 
 
-
 ;; Habilita a exibição de numeros de linha nos buffers de programação.
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
@@ -53,5 +52,10 @@
 
 ;; habilita a visualização da númeração das linha nos buffers de programação
 (add-hook 'prog-mode-hook 'line-number-mode)
+
+
+;; force emacs init text-mode
+(setq-default major-mode 'text-mode)
+
 
 (provide 'init-easy)
