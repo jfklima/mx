@@ -1,11 +1,16 @@
 (use-package org
   :ensure nil
   :config
+  (require 'org)
+  (setq org-clock-sound "~/.songs/ding.wav")
+
   (setq org-directory "~/org/")
 
   (setq org-capture-templates
-	   '(("a" "Add TODO in PROJECT" entry (file+headline "~/org/todo.org" "Tarefas")
-	      "* TODO %?%i%A")))
+	   '(("a" "ADD TODO" entry (file+headline "~/org/todo.org" "Tarefas")
+	      "* TODO %?%i%A")
+	     ("n" "NOTA" entry (file+headline "~/org/nota.org" "Anotation")
+	      "* %?")))
 
   (setq org-hide-leading-stars t)
 
@@ -32,6 +37,7 @@
     "o s" 'org-store-link
     "o t" '(:def nil :wk "timer")
     "o t t" 'org-timer-set-timer
+    "o t p" 'org-timer-pause-or-continue
     "o o" 'todo
     "o f" 'explore-org-dir)
 
@@ -44,11 +50,13 @@
     "d" 'org-deadline
     "/" 'org-sparse-tree
     "A" 'org-archive-subtree
-    "w" '(lambda ()
-	   (interactive)
-	   (if (equal (buffer-name) "CAPTURE-todo.org")
-	       (org-capture-refile)
-	     (org-refile)))
+    "w" '(:def (lambda ()
+		 (interactive)
+		 (if (or (equal (buffer-name) "CAPTURE-todo.org")
+			 (equal (buffer-name) "CAPTURE-nota.org"))
+		     (org-capture-refile)
+		   (org-refile)))
+	       :wk "refile")
     "i" 'org-set-tags-command
     "l" 'org-insert-link
     "o" 'org-open-at-point))
