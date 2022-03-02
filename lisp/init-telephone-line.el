@@ -116,22 +116,54 @@
     (accent . (telephone-line-accent-active . telephone-line-accent-inactive))
     (nil . (mode-line . mode-line-inactive))))
 
+  (telephone-line-defsegment telephone-line-flycheck-segment ()
+  "Displays current checker state."
+  (when (bound-and-true-p flycheck-mode)
+    (let* ((text (pcase flycheck-last-status-change
+		   ('finished (if flycheck-current-errors
+				  (let-alist (flycheck-count-errors flycheck-current-errors)
+				    (if (or .error .warning)
+					(propertize (format "%s/%s"
+							    (or .error 0) (or .warning 0))
+						    'face 'telephone-line-warning)
+				      ""))
+				(propertize ":)" 'face 'telephone-line-unimportant)))
+		   ('running     "*")
+		   ('no-checker  (propertize "-" 'face 'telephone-line-unimportant))
+		   ('not-checked "=")
+		   ('errored     (propertize "!" 'face 'telephone-line-error))
+		   ('interrupted (propertize "." 'face 'telephone-line-error))
+		   ('suspicious  "?"))))
+      (propertize text
+		  'help-echo (pcase flycheck-last-status-change
+			       ('finished "Display errors found by Flycheck")
+			       ('running "Running...")
+			       ('no-checker "No Checker")
+			       ('not-checked "Not Checked")
+			       ('errored "Error!")
+			       ('interrupted "Interrupted")
+			       ('suspicious "Suspicious?"))
+		  'display '(raise 0.0)
+		  'mouse-face '(:box 1)
+		  'local-map (make-mode-line-mouse-map
+			      'mouse-1 #'flycheck-list-errors)))))
+
+
   (setq telephone-line-lhs
 	'((modal . (telephone-line-multistate-tag-segment))
 	  (mx-buffer . (telephone-line-mx-buffer-segment))
 	  (nil . (telephone-line-position-segment)))
 
+
 	telephone-line-center-lhs
 	'((accent . (telephone-line-major-mode-segment)))
 
 	telephone-line-center-rhs
-	'(;; (mx-blue . (telephone-line-perspective-segment))
-	  (mx-blue . (telephone-line-projectile-segment))
+	'((mx-blue . (telephone-line-projectile-segment))
 	  (nil . (telephone-line-mx-display-time-segment)))
 
 	telephone-line-rhs
-	'(
-	  (mx-red . (telephone-line-vc-segment))
+	'((mx-red . (telephone-line-vc-segment))
 	  (accent . (telephone-line-flycheck-segment))))
 
   (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
