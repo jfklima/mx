@@ -67,6 +67,7 @@
 (require 'ido-occur)
 
 (lmap
-  "s s" 'ido-occur)
+  "s s" 'ido-occur
+  "s ." 'ido-occur-at-point)
 
 (provide 'init-ido)
