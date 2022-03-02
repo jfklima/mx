@@ -108,6 +108,9 @@
   "a" '(:def nil :wk "applications")
   "a s" 'eshell
 
+  "t" '(:def nil :wk "toggle")
+  "t c" '(:def company-mode :wk "autocomplete")
+
   "q" '(:def nil :wk "quit")
   "q q" 'save-buffers-kill-emacs)
 
