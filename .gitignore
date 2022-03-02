@@ -12,3 +12,6 @@ transient/
 .cache/
 .emacs.desktop
 projectile.cache
+.emacs.desktop.lock
+.perspective
+ding.wav

@@ -35,12 +35,8 @@
      )))
 
   (defun centaur-tabs-buffer-groups ()
-  "`centaur-tabs-buffer-groups' control buffers' group rules.
+  "`centaur-tabs-buffer-groups' control buffers' group rules."
 
-Group centaur-tabs with mode if buffer is derived from `eshell-mode'
-`emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.  All buffer
-name start with * will group to \"Emacs\".  Other buffer group by
-`centaur-tabs-get-group-name' with project name."
   (list
    (cond
     ((string-equal "*" (substring (buffer-name) 0 1))
@@ -51,12 +47,6 @@ name start with * will group to \"Emacs\".  Other buffer group by
 
     ((derived-mode-p 'org-mode)
      "ORGANIZADOR")
-
-    ((derived-mode-p 'emacs-lisp-mode)
-     "CONFIG")
-
-    ((derived-mode-p 'lisp-interaction-mode)
-     "CONFIG")
 
     ((derived-mode-p 'prog-mode)
      (projectile-project-name))
@@ -80,14 +70,18 @@ name start with * will group to \"Emacs\".  Other buffer group by
     "M-n" 'centaur-tabs-forward-tab
     "M-p" 'centaur-tabs-backward-tab)
   (lmap
-    "b l" '(:def centaur-tabs-switch-group :wk "list-groups")
+    "b l" '(:def centaur-tabs-switch-group
+		 :wk "list-groups")
     "b U" '(:def centaur-tabs-kill-other-buffers-in-current-group
 		 :wk "unique-buffer")
-    "b C" '(:def centaur-tabs-kill-all-buffers-in-current-group :wk "close-all")
+    "b C" '(:def centaur-tabs-kill-all-buffers-in-current-group
+		 :wk "close-group")
     "b K" '(:def centaur-tabs-kill-unmodified-buffers-in-current-group
 		 :wk "delete-unmodified")
-    "b >" 'centaur-tabs-select-end-tab
-    "b <" 'centaur-tabs-select-beg-tab)
+    "b >" '(:def centaur-tabs-select-end-tab
+		 :wk "select-last-tab")
+    "b <" '(:def centaur-tabs-select-beg-tab
+		 :wk "select-first-tab"))
   :bind
   ("C-c l" . centaur-tabs-switch-group)
   ("M-<up>" . centaur-tabs-backward-group)
