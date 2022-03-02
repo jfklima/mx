@@ -1,5 +1,5 @@
 (use-package perspective
-  :disabled t
+  :disabled nil
   :config
   (setq	 persp-interactive-completion-function 'ido-completing-read
 
