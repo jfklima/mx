@@ -1,6 +1,6 @@
 (require 'ido)
 (ido-mode 1)
-(ido-everywhere 1)
+;; (ido-everywhere 1)
 
 (use-package ido-completing-read+
   :config
@@ -61,25 +61,12 @@
 (defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
 
-(defun ido-M-x ()
-  "filter candidates commands in minibuffer."
-  (interactive)
-  (call-interactively
-   (intern
-    (ido-completing-read
-     "M-x "
-     (all-completions "" obarray 'commandp)))))
+(require 'ido-hacks)
+(ido-hacks-mode 1)
 
-(defvar ido-M-x-map (make-sparse-keymap))
+(require 'ido-occur)
 
-(define-minor-mode ido-M-x-mode
-  "Toggle ido-M-x mode."
-  :init-value nil
-  :keymap ido-M-x-map
-  (ido-M-x))
-
-(lmap "SPC" 'ido-M-x-mode)
-
-(use-package amx :disabled t)
+(lmap
+  "s s" 'ido-occur)
 
 (provide 'init-ido)
