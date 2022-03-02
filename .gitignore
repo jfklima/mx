@@ -9,3 +9,6 @@ recentf
 amx-items
 eshell/
 transient/
+.cache/
+.emacs.desktop
+projectile.cache

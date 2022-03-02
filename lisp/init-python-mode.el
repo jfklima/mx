@@ -13,5 +13,4 @@
 	lsp-pyright-diagnostic-mode "workspace"
 	lsp-pyright-python-executable-cmd "python3"))
 
-
 (provide 'init-python-mode)

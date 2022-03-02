@@ -31,7 +31,7 @@
   "x" 'backward-delete-char-untabify
   "\\" 'delete-horizontal-space
 
-  "s" 'save-buffer
+  "s" nil
   "Q" 'fill-paragraph
   "K" 'kill-whole-line
   "D" 'kill-word
@@ -60,25 +60,25 @@
 
   ":" 'eval-expression
 
-  "q" 'quit-window)
+  "q" 'kill-buffer-and-window)
+  ;; "q" 'quit-window)
 
 
 ;; leader-map
 (lmap
-  ;; "SPC" '(:def helm-M-x :wk "M-x")
-  ;; "TAB" '(:def helm-buffers-list :wk "mx-buffers")
+  "SPC" 'execute-extended-command
   "TAB" 'last-buffer
   "h" '(:def nil :wk "help")
   "h" help-map
   "f" '(:def nil :wk "file")
-  "f f" '(:def ido-find-file :wk "find-file")
+  "f f" 'find-file
   "f i" '(:def (lambda () (interactive) (ido-find-file-in-dir "~/.emacs.d/lisp/"))
 	       :wk "find-inits")
 
   "f o" 'find-file-other-window
 
   "b" '(:def nil :wk "buffer")
-  "b s" nil
+  "b s" 'save-buffer
   "b b" 'switch-to-buffer
   "b k" 'kill-this-buffer
   "b a" 'beginning-of-buffer
@@ -99,7 +99,6 @@
   "m" '(:def nil :wk "mode")
 
   "s" '(:def nil :wk "search")
-  "s s" '(:def helm-occur :wk "helm-search")
 
   "B" '(:def nil :wk "bookmarks")
   "B a" '(:def bookmark-set :wk "add-to-bookmak")

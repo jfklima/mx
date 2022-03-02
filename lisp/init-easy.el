@@ -58,4 +58,7 @@
 (setq-default major-mode 'text-mode)
 
 
+;; salva a sessão de trabalho.
+(desktop-save-mode 1)
+
 (provide 'init-easy)

@@ -105,6 +105,7 @@
 	'mode-line-inactive
       'telephone-line-evil-replace))
 
+
   (setq telephone-line-faces
   '((modal . telephone-line-modal-face)
     (persp . telephone-line-persp-face)
@@ -124,12 +125,13 @@
 	'((accent . (telephone-line-major-mode-segment)))
 
 	telephone-line-center-rhs
-	'((mx-blue . (telephone-line-projectile-segment))
-	  ;; (mx-blue . (telephone-line-perspective-segment))
+	'(;; (mx-blue . (telephone-line-perspective-segment))
+	  (mx-blue . (telephone-line-projectile-segment))
 	  (nil . (telephone-line-mx-display-time-segment)))
 
 	telephone-line-rhs
-	'((mx-red . (telephone-line-vc-segment))
+	'(
+	  (mx-red . (telephone-line-vc-segment))
 	  (accent . (telephone-line-flycheck-segment))))
 
   (setq telephone-line-primary-left-separator 'telephone-line-cubed-left

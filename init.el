@@ -29,6 +29,7 @@
 (require 'init-projectile)
 (require 'init-neotree)
 (require 'init-perspective)
+(require 'init-centaur-tabs)
 (require 'init-flycheck)
 (require 'init-lsp)
 (require 'init-telephone-line)

@@ -29,7 +29,9 @@
     "o" '(:def nil :wk "org")
     "o c" 'org-capture
     "o a" 'org-agenda
-    "o t" 'org-store-link
+    "o s" 'org-store-link
+    "o t" '(:def nil :wk "timer")
+    "o t t" 'org-timer-set-timer
     "o o" 'todo
     "o f" 'explore-org-dir)
 
@@ -56,6 +58,6 @@
   (interactive)
   (find-file "~/org/todo.org"))
 
-(todo)
+;; (todo)
 
 (provide 'init-org)
