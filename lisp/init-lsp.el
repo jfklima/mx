@@ -1,4 +1,5 @@
 (use-package lsp-mode
+  :disabled t
   :commands lsp
   :hook (lsp-mode . flycheck-mode)
 
@@ -7,6 +8,7 @@
 
 
 (use-package lsp-ui
+  :disabled t
   :hook (lsp-mode . lsp-ui-mode)
   :after lsp-mode
   :config

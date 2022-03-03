@@ -70,7 +70,7 @@
     "M-n" 'centaur-tabs-forward-tab
     "M-p" 'centaur-tabs-backward-tab)
   (lmap
-    "b l" '(:def centaur-tabs-switch-group
+    "b l" '(:def 'centaur-tabs--buffer-show-groups
 		 :wk "list-groups")
     "b U" '(:def centaur-tabs-kill-other-buffers-in-current-group
 		 :wk "unique-buffer")

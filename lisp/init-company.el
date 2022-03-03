@@ -4,7 +4,7 @@
   (emacs-lisp-mode . company-mode)
   (python-mode . company-mode)
   :init
-  ;; (add-hook 'after-init-hook 'company-tng-mode)
+  (add-hook 'after-init-hook 'company-tng-mode)
   (imap "TAB" 'company-complete)
 
   :config
@@ -21,6 +21,7 @@
 
   (let ((map company-active-map))
 
+    ;; (define-key map (kbd "TAB") 'company-indent-or-complete-common)
     (define-key map (kbd "M-l") 'company-select-previous)
     (define-key map (kbd "C-l") 'company-select-previous)
 

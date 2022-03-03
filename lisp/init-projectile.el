@@ -1,4 +1,5 @@
 (use-package projectile
+  :demand t
   :config
 
   (setq projectile-completion-system 'auto
@@ -17,7 +18,7 @@
     "p b" 'projectile-switch-to-buffer
     "p p" '(:def projectile-command-map :wk "commands")
     "p q" '(:def projectile-switch-project :wk "switch-project")
-    "p o" '(:def projectile-switch-open-project :wk "switch-open-project")
+    "p o" '(:def centaur-tabs-switch-group :wk "switch-open-project")
     "p d" '(:def mx-neotree-projectile-action :wk "ROOT-DIR")
     "p f" '(:def projectile-find-file :wk "find-file")
     "p b" '(:def projectile-switch-to-buffer :wk "switch-to-buffer")

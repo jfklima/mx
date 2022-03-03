@@ -1,4 +1,5 @@
 (use-package org
+  :demand
   :ensure nil
   :config
   (require 'org)
