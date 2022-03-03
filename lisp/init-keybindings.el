@@ -87,6 +87,11 @@
   "b K" '(:def crux-kill-other-buffers :wk "kill-other-buffers")
   "b D" '(:def crux-delete-buffer-and-file :wk "delete-buffer-and-file")
   "b R" '(:def crux-rename-buffer-and-file :wk "rename-buffer-and-file")
+  "b q" '(:def (lambda ()
+		 "Open scratch buffer in other window."
+		 (interactive)
+		 (switch-to-buffer "*scratch*"))
+	       :wk "*scratch*")
 
   "w" '(:def nil :wk "window")
   "w -" 'split-window-below
