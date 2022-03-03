@@ -61,4 +61,8 @@
 ;; salva a sessão de trabalho.
 (desktop-save-mode 1)
 
+;; Performance
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
 (provide 'init-easy)

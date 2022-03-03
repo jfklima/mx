@@ -1,10 +1,7 @@
 (use-package lsp-mode
   :commands lsp
   :hook (lsp-mode . flycheck-mode)
-  :init
-  ;; Performance
-  (setq gc-cons-threshold 100000000)
-  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+
   :config
   (setq lsp-diagnostics-provider :flycheck))
 
