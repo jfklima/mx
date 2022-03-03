@@ -1,4 +1,5 @@
 (use-package centaur-tabs
+  :disabled t
   :demand t
   :config
   (setq centaur-tabs-style 'bar
