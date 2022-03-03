@@ -1,4 +1,4 @@
-(setq custom-file (make-temp-file "emacs-custom"))
+;; (setq custom-file (make-temp-file "emacs-custom"))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "community" user-emacs-directory))
 
@@ -35,3 +35,9 @@
 (require 'init-telephone-line)
 (require 'init-elisp-mode)
 (require 'init-python-mode)
+
+;; config changes made through the customize UI will be stored here
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
+(when (file-exists-p custom-file)
+  (load custom-file))
