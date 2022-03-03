@@ -29,6 +29,23 @@
 
   (setq org-agenda-files '("~/org/todo.org" "~/org/compromissos.org"))
 
+  ;; comando para trabalhar com project.org. Cada projeto terá um
+  ;; arquivo de org para permitir o gerenciamento de projetos.  O
+  ;; comando permitirá acessar o arquivo project.org do projeto se
+  ;; este existir. Se não existir criará o arquivo na raiz do projeto.
+  (require 'projectile)
+  (defun switch-to-proj-org ()
+    "Switch to file PROJ NAME-PROJECT ORG in project current."
+    (interactive)
+    (let ((file (concat (projectile-project-root)
+			".PROJ-"
+			(projectile-project-name)
+			".org")))
+      (if (file-exists-p file)
+	  (find-file file)
+	(progn
+	  (make-empty-file file)
+	  (find-file file)))))
 
   (lmap
     "o" '(:def nil :wk "org")
@@ -38,7 +55,8 @@
     "o t" '(:def nil :wk "timer")
     "o t t" 'org-timer-set-timer
     "o t p" 'org-timer-pause-or-continue
-    "o o" 'todo
+    ;; "o o" 'todo
+    "o o" 'switch-to-proj-org
     "o f" 'explore-org-dir)
 
   (mmap

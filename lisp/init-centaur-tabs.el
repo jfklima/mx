@@ -45,8 +45,8 @@
     ((derived-mode-p 'magit-mode)
      "MAGIT")
 
-    ((derived-mode-p 'org-mode)
-     "ORGANIZADOR")
+    ;; ((derived-mode-p 'org-mode)
+     ;; "ORGANIZADOR")
 
     ((derived-mode-p 'prog-mode)
      (projectile-project-name))
