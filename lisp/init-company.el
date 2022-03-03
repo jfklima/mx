@@ -4,7 +4,7 @@
   (emacs-lisp-mode . company-mode)
   (python-mode . company-mode)
   :init
-  (add-hook 'after-init-hook 'company-tng-mode)
+  ;; (add-hook 'after-init-hook 'company-tng-mode)
   (imap "TAB" 'company-complete)
 
   :config
@@ -16,7 +16,7 @@
 	company-selection-wrap-around t
 	company-idle-delay 0.0)
 
-  (add-hook 'python-mode-hook '(lambda () (setq-local company-minimum-prefix-length 1)))
+  ;; (add-hook 'python-mode-hook '(lambda () (setq-local company-minimum-prefix-length 1)))
 
   (let ((map company-active-map))
 
