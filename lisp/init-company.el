@@ -14,7 +14,8 @@
 	company-minimum-prefix-length 3
 	;; company-frontends '(company-tng-frontend company-box-frontend)
 	company-selection-wrap-around t
-	company-idle-delay 0.0)
+	company-idle-delay 0.0
+	company-tooltip-idle-delay .1)
 
   ;; (add-hook 'python-mode-hook '(lambda () (setq-local company-minimum-prefix-length 1)))
 
