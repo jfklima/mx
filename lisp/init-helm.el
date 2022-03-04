@@ -14,6 +14,10 @@
   (setq helm-autoresize-min-height 20)
   (helm-autoresize-mode 1)
 
+  (lmap
+    "SPC" 'helm-M-x
+    "s s" 'helm-occur)
+
   (helm-mode 1))
 
 

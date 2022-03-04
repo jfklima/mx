@@ -1,29 +1,10 @@
 (require 'ido)
 (ido-mode 1)
-;; (ido-everywhere 1)
 
-(use-package ido-completing-read+
-  :config
-  (ido-ubiquitous-mode 1))
-
-(use-package crm-custom
-  :config
-  (crm-custom-mode 1))
 
 (setq ido-enable-flex-matching t
       ido-cannot-complete-command 'ido-next-match
       ido-max-window-height 0.8
-
-      ido-file-extensions-order '(".py" ".org" ".el" ".sh")
-      ido-ignore-buffers '("\\` " "^\\*\\.+\\*")
-      ido-ignore-buffers (list (rx (or (and bos  " ")
-				       (and bos
-					    (or "*Completions*"
-						"*Shell Command Output*"
-						"*vc-diff*"
-						"^*.+.*")
-					    eos))))
-      ido-ignore-extensions t
 
       ido-default-buffer-method 'select-window
       ido-default-file-method 'select-window)
@@ -61,13 +42,5 @@
 (defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
 
-(require 'ido-hacks)
-(ido-hacks-mode 1)
-
-(require 'ido-occur)
-
-(lmap
-  "s s" 'ido-occur
-  "s ." 'ido-occur-at-point)
 
 (provide 'init-ido)

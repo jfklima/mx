@@ -2,7 +2,7 @@
   :demand t
   :config
 
-  (setq projectile-completion-system 'auto
+  (setq projectile-completion-system 'helm
 	projectile-switch-project-action 'projectile-find-file
 	projectile-project-search-path '("~/workspace/"
 					 "~/init_macs"

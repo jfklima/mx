@@ -1,6 +1,5 @@
 (use-package elisp-mode
   :ensure nil
-  :hook (emacs-lisp-mode . flycheck-mode)
   :config
   (mmap :keymaps 'emacs-lisp-mode-map
     "f" 'eval-defun

@@ -12,14 +12,14 @@
   "l" 'recenter-top-bottom
   "v" 'scroll-up-command
   "V" 'scroll-down-command
-  "]" 'scroll-other-window
-  "[" 'scroll-other-window-down
+  ">" 'scroll-other-window
+  "<" 'scroll-other-window-down
 
   ;; EDIÇÃO
   "w" 'kill-region
   "c" 'kill-ring-save
   "t" 'move-text-up
-  "h" 'move-text-down
+  "T" 'move-text-down
   ";" 'comment-line
   "g" 'keyboard-quit
 
@@ -28,7 +28,7 @@
   "k" 'kill-line
   "d" 'delete-char
 
-  "x" 'backward-delete-char-untabify
+  ;; "x" 'backward-delete-char-untabify
   "\\" 'delete-horizontal-space
 
   "s" nil
@@ -41,17 +41,18 @@
   "B" 'backward-word
   "A" 'backward-sentence
   "E" 'forward-sentence
-  ;; insert
-  "Is" 'insert-space
-  "Ii" 'insert-space-insert
-  "Ib" 'insert-space-between-chars
+
+  ;; INSERT
+  "ss" 'insert-space
+  "si" 'insert-space-insert
+  "sb" 'insert-space-between-chars
 
   "y" 'yank
   "Y" 'yank-pop
 
   "/" 'undo
 
-  "ç" 'exchange-point-and-mark
+  "x" 'exchange-point-and-mark
   "C" "C-c C-c"
 
   "r" '(:def nil :wk "register")
@@ -60,8 +61,8 @@
 
   ":" 'eval-expression
 
-  "q" 'kill-buffer-and-window)
-  ;; "q" 'quit-window)
+  ;; "q" 'kill-buffer-and-window)
+  "q" 'quit-window)
 
 
 ;; leader-map
@@ -74,7 +75,6 @@
   "f f" 'find-file
   "f i" '(:def (lambda () (interactive) (ido-find-file-in-dir "~/.emacs.d/lisp/"))
 	       :wk "find-inits")
-
   "f o" 'find-file-other-window
 
   "b" '(:def nil :wk "buffer")
