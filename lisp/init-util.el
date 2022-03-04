@@ -7,14 +7,7 @@
 
 (use-package crux)
 (emap
-  "a" 'crux-move-beginning-of-line
-  "C-m" 'crux-smart-open-line
-  "sm" 'crux-smart-open-line-above
-  "sk" 'crux-kill-line-backwards
-  "C-k" 'crux-smart-kill-line
-  "sl" 'crux-duplicate-current-line-or-region
-  "sj" 'crux-top-join-line
-  "M-o" 'crux-other-window-or-switch-buffer)
+  "a" 'crux-move-beginning-of-line)
 
 
 (use-package zzz-to-char

@@ -1,6 +1,4 @@
 (use-package helm
-  :disabled t
-  :demand t
   :config
   (require 'helm-config)
 
@@ -19,7 +17,6 @@
     "s s" 'helm-occur)
 
   (helm-mode 1))
-
 
 
 (provide 'init-helm)
