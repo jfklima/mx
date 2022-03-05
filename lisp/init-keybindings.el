@@ -28,7 +28,7 @@
   "k" 'kill-line
   "d" 'delete-char
 
-  ;; "x" 'backward-delete-char-untabify
+  "x" 'backward-delete-char-untabify
   "\\" 'delete-horizontal-space
 
   "s" nil
@@ -52,7 +52,7 @@
 
   "/" 'undo
 
-  "x" 'exchange-point-and-mark
+  "ç" 'exchange-point-and-mark
   "C" "C-c C-c"
 
   "r" '(:def nil :wk "register")
@@ -62,8 +62,8 @@
   ":" 'eval-expression
 
   ;; "q" 'kill-buffer-and-window)
-  "q" 'quit-window)
 
+  "q" 'quit-window)
 
 ;; leader-map
 (lmap

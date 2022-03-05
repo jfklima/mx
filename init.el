@@ -30,6 +30,7 @@
 (require 'init-neotree)
 (require 'init-telephone-line)
 (require 'init-elisp-mode)
+(require 'init-cc-mode)
 (require 'init-python-mode)
 
 ;; config changes made through the customize UI will be stored here
