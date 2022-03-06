@@ -23,7 +23,6 @@
 (require 'init-crux)
 (require 'init-zzz-to-char)
 (require 'init-undo-fu)
-(require 'init-bufler)
 (require 'init-telephone-line)
 
 ;; programming
