@@ -12,9 +12,6 @@
 	company-minimum-prefix-length 3
 	company-selection-wrap-around t)
 
-  :bind
-  (:map company-active-map
-	("TAB" . company-complete-common-or-cycle))
   )
 
 
