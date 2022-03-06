@@ -16,6 +16,7 @@
 (require 'init-magit)
 (require 'init-projectile)
 (require 'init-neotree)
+(require 'init-bufler)
 
 ;; util
 (require 'init-company)
@@ -26,6 +27,7 @@
 (require 'init-telephone-line)
 
 ;; programming
+(require 'init-helm-dash)
 (require 'init-elisp-mode)
 (require 'init-cc-mode)
 (require 'init-python-mode)

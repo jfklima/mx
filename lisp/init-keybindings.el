@@ -80,6 +80,7 @@
   "b" '(:def nil :wk "buffer")
   "b s" 'save-buffer
   "b b" 'switch-to-buffer
+  "b i" 'ibuffer
   "b k" 'kill-this-buffer
   "b a" 'beginning-of-buffer
   "b e" 'end-of-buffer
