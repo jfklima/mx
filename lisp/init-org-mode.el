@@ -87,4 +87,4 @@
 
 ;; (todo)
 
-(provide 'init-org)
+(provide 'init-org-mode)
