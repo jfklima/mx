@@ -57,15 +57,16 @@
 ;; force emacs init text-mode
 (setq-default major-mode 'text-mode)
 
-
 ;; salva a sessão de trabalho.
 (desktop-save-mode 1)
+
 
 ;; Performance
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
 
+;; desabilita essa opção
 (global-set-key (kbd "C-z") nil)
 
 (provide 'init-easy)

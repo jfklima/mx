@@ -14,6 +14,7 @@
 
   (lmap
     "SPC" 'helm-M-x
+    "f f" 'helm-find-files
     "s s" 'helm-occur)
 
   (helm-mode 1))
