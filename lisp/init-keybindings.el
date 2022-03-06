@@ -61,8 +61,6 @@
 
   ":" 'eval-expression
 
-  ;; "q" 'kill-buffer-and-window)
-
   "h" 'info
 
   "q" 'quit-window)
@@ -75,9 +73,7 @@
   "h" help-map
   "f" '(:def nil :wk "file")
   "f f" 'find-file
-  ;; "f i" '(:def (lambda () (interactive) (ido-find-file-in-dir "~/.emacs.d/lisp/"))
-  ;; :wk "find-inits")
-  "f i" 'insert-file
+  "f i" 'visit-init
   "f o" 'find-file-other-window
   "f w" '(:def write-file :wk "save-as")
 

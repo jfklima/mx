@@ -11,7 +11,6 @@
 (require 'init-which-key)
 (require 'init-keybindings)
 (require 'init-helm)
-;; (require 'init-ido)
 
 ;; manager projects
 (require 'init-magit)
@@ -26,7 +25,6 @@
 (require 'init-undo-fu)
 (require 'init-bufler)
 (require 'init-telephone-line)
-(require 'init-util)
 
 ;; programming
 (require 'init-elisp-mode)
