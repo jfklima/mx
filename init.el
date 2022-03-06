@@ -21,7 +21,7 @@
 (require 'init-which-key)
 (require 'init-keybindings)
 (require 'init-helm)
-(require 'init-ido)
+;; (require 'init-ido)
 (require 'init-company)
 (require 'init-util)
 (require 'init-org)
