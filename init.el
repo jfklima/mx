@@ -54,10 +54,11 @@
 (add-hook 'prog-mode-hook 'line-number-mode)
 
 
-;; force emacs init text-mode
+;; torna o `text-mode' o modo major default.
 (setq-default major-mode 'text-mode)
 
-;; desabilita essa opção
+
+;; deaabilita colocar o emacs em segundo plano.
 (global-set-key (kbd "C-z") nil)
 
 

@@ -1,4 +1,5 @@
 (use-package bufler
+  :disabled t
   :config (lmap
 	    "TAB" 'bufler
 	    "b b" 'bufler)
