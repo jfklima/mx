@@ -1,3 +1,8 @@
+(defun visit-init ()
+  "Visita o arquivo init do usuário."
+  (interactive)
+  (find-file (expand-file-name "init.el" user-emacs-directory)))
+
 (defun insert-space ()
   "Insert space in point."
   (interactive)
