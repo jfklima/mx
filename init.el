@@ -22,6 +22,10 @@
 (show-paren-mode 1)
 
 
+;; destaca a lonha conrrente.
+(require 'hl-line)
+(global-hl-line-mode +1)
+
 ;; habilita o destaque da linha atual
 (remove-hook 'prog-mode-hook 'hl-line-mode)
 
@@ -62,6 +66,11 @@
 (global-set-key (kbd "C-z") nil)
 
 
+;; performace
+(setq read-process-output-max (* 1024 1024))
+(setq gc-cons-threshold 100000000)
+
+
 ;; (setq custom-file (make-temp-file "emacs-custom"))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "community" user-emacs-directory))
@@ -89,4 +98,4 @@
 
 
 ;; inicia o meu sistema de organização do trabalho.
-(find-file (expand-file-name "organizador.org" org-directory))
+;; (find-file (expand-file-name "organizador.org" org-directory))
