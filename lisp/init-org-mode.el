@@ -5,21 +5,25 @@
   (require 'org)
   (setq org-clock-sound "~/.songs/ding.wav")
 
-  (setq org-directory "~/org/")
+  (setq org-directory "~/organizador/")
+  (setq org-todo-file (concat org-directory "todo.org"))
+  (setq org-organizador-file (concat org-directory "organizador.org"))
 
   (setq org-capture-templates
-	   '(("a" "ADD TODO" entry (file+headline "~/org/todo.org" "Tarefas")
-	      "* TODO %?%i%A")
-	     ("n" "NOTA" entry (file+headline "~/org/nota.org" "Anotation")
-	      "* %?")))
+	'(("a" "NOTA" entry (file+headline org-organizador-file "Notas")
+	   "* %?")
+
+	  ("t" "ADD TODO" entry (file+headline org-todo-file "Tarefas")
+	   "* TODO %?%i%A")
+	  ))
 
   (setq org-hide-leading-stars t)
 
-    (setq org-todo-keywords
-	  '((sequence "PROJECT(p)" "TODO(t)" "|" "DONE(d)")))
+  ;; (setq org-todo-keywords
+	;; '((sequence "PROJECT(p)" "TODO(t)" "|" "DONE(d)")))
 
-  (setq org-todo-keyword-faces
-	'(("PROJECT" . (:foreground "blue"))))
+  ;; (setq org-todo-keyword-faces
+	;; '(("PROJECT" . (:foreground "blue"))))
 
   (defun init-org-mode ()
     (progn
@@ -78,7 +82,9 @@
 	       :wk "refile")
     "i" 'org-set-tags-command
     "l" 'org-insert-link
-    "o" 'org-open-at-point))
+    "o" 'org-open-at-point
+    "u" 'outline-up-heading
+    ))
 
 
 (defun todo ()
