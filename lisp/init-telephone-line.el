@@ -98,29 +98,71 @@
       (setq display-time-24hr-format t)
       (shell-command-to-string "echo -n $(date '+%H:%M%p')")))
 
+  (telephone-line-defsegment telephone-line-flycheck-segment ()
+  "Displays current checker state."
+  (when (bound-and-true-p flycheck-mode)
+    (let* ((text (pcase flycheck-last-status-change
+		   ('finished (if flycheck-current-errors
+				  (let-alist (flycheck-count-errors flycheck-current-errors)
+				    (if (or .error .warning)
+					(propertize (format "%s/%s"
+							    (or .error 0) (or .warning 0))
+						    'face 'telephone-line-warning)
+				      ""))
+				(propertize ":)" 'face 'telephone-line-unimportant)))
+		   ('running     "*")
+		   ('no-checker  (propertize "-" 'face 'telephone-line-unimportant))
+		   ('not-checked "=")
+		   ('errored     (propertize "!" 'face 'telephone-line-error))
+		   ('interrupted (propertize "." 'face 'telephone-line-error))
+		   ('suspicious  "?"))))
+      (propertize text
+		  'help-echo (pcase flycheck-last-status-change
+			       ('finished "Display errors found by Flycheck")
+			       ('running "Running...")
+			       ('no-checker "No Checker")
+			       ('not-checked "Not Checked")
+			       ('errored "Error!")
+			       ('interrupted "Interrupted")
+			       ('suspicious "Suspicious?"))
+		  'display '(raise 0.0)
+		  'mouse-face '(:box 1)
+		  'local-map (make-mode-line-mouse-map
+			      'mouse-1 #'flycheck-list-errors)))))
+
+(telephone-line-defsegment* telephone-line-xah-fly-keys-segment ()
+  (when (boundp xah-fly-insert-state-q)
+    (let ((tag (if xah-fly-insert-state-q
+		   "INSERT" "COMMAND")))
+      (if telephone-line-evil-use-short-tag
+	  (seq-take tag 1)
+	tag))))
+
+
   (setq telephone-line-lhs
 	'(
 	  (modal . (telephone-line-multistate-tag-segment))
-	  (mx-buffer . (telephone-line-mx-buffer-segment))
-	  (nil . (telephone-line-position-segment))
+	  (nil . (telephone-line-mx-display-time-segment))
+	  (mx-blue . (telephone-line-projectile-segment))
 	  )
 
 	telephone-line-center-lhs
 	'(
-	  (accent . (telephone-line-major-mode-segment))
+	  (mx-buffer . (telephone-line-mx-buffer-segment))
+	  (nil . (telephone-line-position-segment))
 	  )
 
 	telephone-line-center-rhs
 	'(
-	  (mx-blue . (telephone-line-projectile-segment))
-	  (nil . (telephone-line-mx-display-time-segment))
+	  (accent . (telephone-line-major-mode-segment))
 	  )
 
 	telephone-line-rhs
 	'(
 	  (accent . (telephone-line-process-segment))
 	  (mx-red . (telephone-line-vc-segment))
-	  (accent . (telephone-line-atom-encoding-segment))
+	  ;; (accent . (telephone-line-atom-encoding-segment))
+	  (accent . (telephone-line-flycheck-segment))
 	  ))
 
 
