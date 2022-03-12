@@ -16,7 +16,7 @@
 
 (defun ruby-doc ()
   (interactive)
-  (setq-local dash-docs-docsets '("Ruby")))
+  (setq-local dash-docs-docsets '("Ruby" "Ruby on Rails" )))
 (add-hook 'ruby-mode-hook 'ruby-doc)
 
 (provide 'init-helm-dash)
