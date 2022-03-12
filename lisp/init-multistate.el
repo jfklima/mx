@@ -18,6 +18,8 @@
   (multistate-uppercase-state-enter . caps-lock-mode)
   (multistate-uppercase-state-exit . (lambda () (caps-lock-mode 0)))
 
+  (conf-mode . multistate-mode)
+
   :init
   (use-package caps-lock)
 
