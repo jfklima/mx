@@ -123,7 +123,8 @@
 
 (imap
   "SPC" 'self-insert-command
-  "C-l" 'backward-kill-word)
+  "C-l" 'recenter-top-bottom
+  "M-l" 'backward-kill-word)
 
 (umap
   "SPC" 'self-insert-command)
