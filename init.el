@@ -68,8 +68,8 @@
 
 ;; performace
 (setq read-process-output-max (* 1024 1024))
-(setq gc-cons-threshold 100000000)
-
+;; (setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold 20000000)
 
 ;; (setq custom-file (make-temp-file "emacs-custom"))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))

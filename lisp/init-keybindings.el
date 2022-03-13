@@ -73,7 +73,7 @@
   "h" help-map
   "f" '(:def nil :wk "file")
   "f f" 'find-file
-  "f i" 'visit-init
+  "f I" 'visit-init
   "f o" 'find-file-other-window
   "f w" '(:def write-file :wk "save-as")
 

@@ -11,6 +11,7 @@
 (require 'init-which-key)
 (require 'init-keybindings)
 (require 'init-helm)
+(require 'init-ido)
 
 ;; manager projects
 (require 'init-magit)
