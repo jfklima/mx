@@ -42,7 +42,11 @@
       'telephone-line-evil-replace))
 
     (telephone-line-defsegment* telephone-line-mx-buffer-segment ()
-      (buffer-name))
+      (if (projectile-project-root)
+	  (if (buffer-file-name (current-buffer))
+	      (nth 1 (split-string (buffer-file-name) (projectile-project-name)))
+	    (buffer-name))
+	(buffer-name)))
 
     (defun telephone-line-modal-face (active)
       "Return an appropriate face for the current mode, given whether the frame is ACTIVE."
@@ -159,7 +163,7 @@
 
 	telephone-line-rhs
 	'(
-	  (accent . (telephone-line-process-segment))
+	  ;; (accent . (telephone-line-process-segment))
 	  (mx-red . (telephone-line-vc-segment))
 	  ;; (accent . (telephone-line-atom-encoding-segment))
 	  (accent . (telephone-line-flycheck-segment))
