@@ -12,8 +12,8 @@
   "l" 'recenter-top-bottom
   "v" 'scroll-up-command
   "V" 'scroll-down-command
-  ">" 'scroll-other-window
-  "<" 'scroll-other-window-down
+  "[" 'scroll-other-window
+  "]" 'scroll-other-window-down
 
   ;; EDIÇÃO
   "w" 'kill-region
@@ -32,15 +32,15 @@
   "\\" 'delete-horizontal-space
 
   "s" nil
-  "Q" 'fill-paragraph
-  "K" 'kill-whole-line
-  "D" 'kill-word
-  "J" 'join-line
-  "X" 'backward-kill-word
-  "F" 'forward-word
-  "B" 'backward-word
-  "A" 'backward-sentence
-  "E" 'forward-sentence
+  ",q" 'fill-paragraph
+  ",k" 'kill-whole-line
+  ",d" 'kill-word
+  ",j" 'join-line
+  ",x" 'backward-kill-word
+  ",f" 'forward-word
+  ",b" 'backward-word
+  ",a" 'backward-sentence
+  ",e" 'forward-sentence
 
   ;; INSERT
   "ss" 'insert-space
@@ -48,16 +48,20 @@
   "sb" 'insert-space-between-chars
 
   "y" 'yank
-  "Y" 'yank-pop
+  ",y" 'yank-pop
 
   "/" 'undo
 
   "ç" 'exchange-point-and-mark
-  "C" "C-c C-c"
+  ",c" "C-c C-c"
 
   "r" '(:def nil :wk "register")
   "r r" 'point-to-register
   "r j" 'jump-to-register
+
+  "<" 'kmacro-start-macro
+  ">" 'kmacro-end-macro
+  "." 'kmacro-end-and-call-macro
 
   ":" 'eval-expression
 
